@@ -51,7 +51,9 @@ textarea:focus {
    min-height: 170px;
    display: flex;
    flex-direction: column;
-   justify-content: space-between
+   justify-content: space-between;
+   white-space: pre-wrap; 
+   /* faz com que os espaços em branco no html sejam mantidos (espaços ou quebra de linha no input do user) */
 }
 
 .note-footer {
