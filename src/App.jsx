@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header';
 import NotesList from './components/NotesList';
 import Search from './components/Search';
@@ -15,18 +15,36 @@ function App() {
     },
     {
       id: nanoid(),
-      text: "this is my second ever note!",
+      text: "this is my second note!",
       date: '25/08/2022'
     },
     {
       id: nanoid(),
-      text: "this is my third ever note!",
+      text: "this is my third note!",
       date: '26/08/2022'
     },
   ])
 
   const [searchText, setSearchText] = useState('');
+
   const [darkMode, setDarkMode] = useState(false);
+
+  // useEffect(() => {
+	// 	const savedNotes = JSON.parse(
+	// 		localStorage.getItem('notes')
+	// 	);
+
+	// 	savedNotes && setNotes(savedNotes)
+	// }, []);
+
+	// useEffect(() => {
+	// 	localStorage.setItem(
+	// 		'notes',
+	// 		JSON.stringify(notes)
+	// 	);
+  //   console.log(notes);
+	// }, [notes]);
+  
 
   const addNote = (text) => {
     const date = new Date();
