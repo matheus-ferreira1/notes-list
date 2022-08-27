@@ -1,24 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const AddNote = () => {
-  return (
-    <div className='note new'>
-      <textarea 
-         placeholder="Type your new note..." 
-         cols="10" 
-         rows="8"
-      >
+const AddNote = ({ handleAddNote }) => { 
+   const [noteText, setNoteText] = useState('');
 
-      </textarea>
+   const handleChange = (event) => {
+      setNoteText(event.target.value)
+   }
 
-      <div className="note-footer">
-         <small>200 remaining</small>
-         <button className='save'>Save</button>
+   const handleSaveClick = () => {
+      if (noteText.trim().length > 0) {
+         handleAddNote(noteText)
+         setNoteText('')
+
+      }
+   }
+
+   return (
+      <div className='note new'>
+         <textarea 
+            placeholder="Type your new note..." 
+            cols="10" 
+            rows="8"
+            value={noteText}
+            onChange={handleChange}
+         >
+
+         </textarea>
+
+         <div className="note-footer">
+            <small>200 remaining</small>
+            <button 
+               className='save'
+               onClick={handleSaveClick}
+            >
+               Save
+            </button>
+         </div>
 
       </div>
-
-    </div>
-  )
+   )
 }
 
 export default AddNote
