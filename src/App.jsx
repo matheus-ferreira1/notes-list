@@ -10,19 +10,21 @@ function App() {
     {
       id: nanoid(),
       text: "this is my first ever note!",
-      date: '26/08/2022'
+      date: '24/08/2022'
     },
     {
       id: nanoid(),
       text: "this is my second ever note!",
-      date: '27/08/2022'
+      date: '25/08/2022'
     },
     {
       id: nanoid(),
       text: "this is my third ever note!",
-      date: '28/08/2022'
+      date: '26/08/2022'
     },
   ])
+
+  const [searchText, setSearchText] = useState('');
 
   const addNote = (text) => {
     const date = new Date();
@@ -42,10 +44,10 @@ function App() {
 
   return (
     <div className="container">
-      <Search />
+      <Search handleSearchText={setSearchText} />
       
       <NotesList
-        notes={notes} 
+        notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} 
         handleAddNote={addNote}
         handleDeleteNote={deleteNote}
       />
